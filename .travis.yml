@@ -1,29 +1,22 @@
-os:
-  - linux
-sudo: false
+---
 addons:
   apt:
-    sources:
-<<<<<<< HEAD
-      - ubuntu-toolchain-r-test
-=======
-      - ubuntu-toolchain-r-test 
->>>>>>> a9cf6b826079df28f7753e36251f00706dc1b5f5
     packages:
       - libstdc++6
       - fonts-droid-fallback
-before_script:
-  - git clone https://github.com/flutter/flutter.git -b beta
-  - ./flutter/bin/flutter doctor
-  - gem install coveralls-lcov
-script:
-  - ./flutter/bin/flutter test --coverage
+    sources:
+      - ubuntu-toolchain-r-test
 after_success:
-  -  coveralls-lcov coverage/lcov.info
+  - "coveralls-lcov coverage/lcov.info"
+before_script:
+  - "git clone https://github.com/flutter/flutter.git -b beta"
+  - "./flutter/bin/flutter doctor"
+  - "gem install coveralls-lcov"
 cache:
   directories:
-<<<<<<< HEAD
     - $HOME/.pub-cache
-=======
-    - $HOME/.pub-cache
->>>>>>> a9cf6b826079df28f7753e36251f00706dc1b5f5
+os:
+  - linux
+script:
+  - "./flutter/bin/flutter test --coverage"
+sudo: false
