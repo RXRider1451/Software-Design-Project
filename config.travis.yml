@@ -1,14 +1,18 @@
-language: dart
-dart:
-# Install the latest stable release
-- stable
-# Install the latest beta release
-- beta
-# Install the latest dev release
-- dev
-# Install a specific stable release - 1.15.0
-- "1.15.0"
-# Install a specific dev release, using a partial download URL - 2.9.0-2.0.dev
-- "dev/release/2.9.0-2.0.dev"
-# Install a specific beta release, using a partial download URL - 2.9.0-2.0.beta
-- "beta/release/2.9.0-2.0.beta"
+os:
+  - linux
+sudo: false
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - libstdc++6
+      - fonts-droid-fallback
+before_script:
+  - git clone https://github.com/flutter/flutter.git -b beta
+  - ./flutter/bin/flutter doctor
+script:
+  - ./flutter/bin/flutter test
+cache:
+  directories:
+    - $HOME/.pub-cache
