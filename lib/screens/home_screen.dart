@@ -39,6 +39,11 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       backgroundColor: Colors.black,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: Colors.black,
+        child: Icon(Icons.message, color: Colors.white),
+      ),
       body: ListView(
         children: [
           Stack(
