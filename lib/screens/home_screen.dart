@@ -178,7 +178,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 right: 10,
                 child: Container(
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height,
+                  height: MediaQuery.of(context).size.height - 250,
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -213,8 +213,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       SizedBox(
                         height: 10,
                       ),
-                      Container(
-                        width: MediaQuery.of(context).size.width,
+                      Expanded(
+                        // width: MediaQuery.of(context).size.width,
                         // height: 200,
                         child: ListView.builder(
                             shrinkWrap: true,
