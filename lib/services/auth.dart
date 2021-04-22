@@ -31,6 +31,8 @@ class _AuthState extends State<Auth> {
 
   @override
   Widget build(BuildContext context) {
-    return username == "" ? SignInScreen() : HomeScreen();
+    return Container(
+        color: Colors.white,
+        child: username == "" ? SignInScreen() : HomeScreen());
   }
 }
