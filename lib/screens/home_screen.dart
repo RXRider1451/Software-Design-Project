@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sd_health_science_app/main.dart';
 import 'package:sd_health_science_app/models/taskModel.dart';
+import 'package:sd_health_science_app/services/auth.dart';
 import 'package:sd_health_science_app/widgets/calendeBottomSheet.dart';
 import 'package:sd_health_science_app/widgets/nextAssignmentBar.dart';
 import 'package:sd_health_science_app/widgets/taskListTile.dart';
 import 'package:sd_health_science_app/widgets/taskOpenBottomSheet.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -18,6 +21,9 @@ class _HomeScreenState extends State<HomeScreen> {
   CalendarFormat _calendarFormat = CalendarFormat.month;
   DateTime _focusedDay = DateTime.now();
   DateTime _selectedDay;
+
+  SharedPreferences prefs;
+  String username = "";
 
   List<TaskModel> _dailyTasks;
 
@@ -78,6 +84,12 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     _selectedDay = _focusedDay;
     _dailyTasks = _getEventsForDay(_focusedDay);
+    getSharedPref();
+  }
+
+  getSharedPref() async {
+    prefs = await SharedPreferences.getInstance();
+    username = await prefs.getString('username');
   }
 
   List<TaskModel> _getEventsForDay(DateTime focusedDay) {
@@ -130,27 +142,62 @@ class _HomeScreenState extends State<HomeScreen> {
       drawer: Drawer(
         child: ListView(
           children: [
-            Spacer(),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: ListTile(
-                leading: Icon(
-                  Icons.logout,
-                  color: Colors.black,
-                ),
-                title: Text(
-                  'logout',
-                  style: GoogleFonts.openSans(
-                      fontWeight: FontWeight.normal, color: Colors.black),
-                ),
+            UserAccountsDrawerHeader(
+              accountName: Text(username),
+              accountEmail: Text('email'),
+              decoration: BoxDecoration(color: Colors.black),
+            ),
+            ListTile(
+              onTap: () {},
+              leading: Icon(
+                Icons.home,
+                color: Colors.black,
               ),
-            )
+              title: Text(
+                'Home',
+                style: GoogleFonts.openSans(
+                    fontWeight: FontWeight.normal, color: Colors.black),
+              ),
+            ),
+            ListTile(
+              onTap: () {},
+              leading: Icon(
+                Icons.search,
+                color: Colors.black,
+              ),
+              title: Text(
+                'About Us',
+                style: GoogleFonts.openSans(
+                    fontWeight: FontWeight.normal, color: Colors.black),
+              ),
+            ),
+            Divider(),
+            ListTile(
+              onTap: () async {
+                setState(() {
+                  prefs.setString('username', "");
+                });
+                print('logout');
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) => Auth()));
+              },
+              leading: Icon(
+                Icons.logout,
+                color: Colors.black,
+              ),
+              title: Text(
+                'logout',
+                style: GoogleFonts.openSans(
+                    fontWeight: FontWeight.normal, color: Colors.black),
+              ),
+            ),
+            Divider(),
           ],
         ),
       ),
       backgroundColor: Colors.black,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () async {},
         backgroundColor: Colors.black,
         child: Icon(Icons.message, color: Colors.white),
       ),

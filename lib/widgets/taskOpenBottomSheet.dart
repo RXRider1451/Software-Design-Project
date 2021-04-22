@@ -53,34 +53,36 @@ class taskOpenBottomSheet extends StatelessWidget {
                 height: 5,
               ),
               ListTile(
-                title: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      flex: 2,
-                      child: Text('${taskModel.specialty}',
+                title: Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        flex: 2,
+                        child: Text('${taskModel.specialty}',
+                            style: GoogleFonts.openSans(
+                                fontWeight: FontWeight.w700,
+                                fontSize: 20,
+                                color: Colors.white),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis),
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: Text(
+                          '${taskModel.startTime.year}-${taskModel.startTime.month}-${taskModel.startTime.day}',
                           style: GoogleFonts.openSans(
                               fontWeight: FontWeight.w700,
                               fontSize: 20,
                               color: Colors.white),
                           maxLines: 1,
-                          overflow: TextOverflow.ellipsis),
-                    ),
-                    Expanded(
-                      child: SizedBox(),
-                    ),
-                    Expanded(
-                      flex: 2,
-                      child: Text(
-                        '${taskModel.startTime.year}-${taskModel.startTime.month}-${taskModel.startTime.day}',
-                        style: GoogleFonts.openSans(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 20,
-                            color: Colors.white),
-                        maxLines: 1,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 subtitle: Row(
                   children: [

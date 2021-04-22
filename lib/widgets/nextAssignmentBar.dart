@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sd_health_science_app/models/taskModel.dart';
+import 'package:intl/intl.dart';
 
 class nextAssignmentBar extends StatelessWidget {
   TaskModel nextTask;
@@ -56,14 +57,15 @@ class nextAssignmentBar extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Expanded(
-                          flex: 2,
-                          child: Text('${nextTask.specialty}',
-                              style: GoogleFonts.openSans(
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 20,
-                                  color: Colors.white),
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis),
+                          flex: 3,
+                          child: Text(
+                            '${nextTask.specialty}',
+                            style: GoogleFonts.openSans(
+                                fontWeight: FontWeight.w700,
+                                fontSize: 20,
+                                color: Colors.white),
+                            maxLines: 1,
+                          ),
                         ),
                         Expanded(
                           child: SizedBox(),
@@ -71,7 +73,7 @@ class nextAssignmentBar extends StatelessWidget {
                         Expanded(
                           flex: 2,
                           child: Text(
-                            '${nextTask.startTime.year}-${nextTask.startTime.month}-${nextTask.startTime.day}',
+                            '${DateFormat('dd-MM-yy').format(nextTask.startTime)}',
                             style: GoogleFonts.openSans(
                                 fontWeight: FontWeight.w700,
                                 fontSize: 20,

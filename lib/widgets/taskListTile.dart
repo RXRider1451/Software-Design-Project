@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sd_health_science_app/models/taskModel.dart';
 import 'package:sd_health_science_app/widgets/taskOpenBottomSheet.dart';
+import 'package:intl/intl.dart';
 
 class taskListTile extends StatelessWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;
@@ -21,15 +22,26 @@ class taskListTile extends StatelessWidget {
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            taskModel.specialty,
-            style: GoogleFonts.openSans(
-                fontWeight: FontWeight.w700, fontSize: 18, color: Colors.white),
+          Expanded(
+            child: Text(
+              taskModel.specialty,
+              style: GoogleFonts.openSans(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 18,
+                  color: Colors.white),
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+            ),
           ),
-          Text(
-            '${taskModel.startTime.hour}:${taskModel.startTime.minute} - ${taskModel.endTime.hour}:${taskModel.endTime.minute}',
-            style: GoogleFonts.openSans(
-                fontWeight: FontWeight.w700, fontSize: 18, color: Colors.white),
+          Expanded(
+            child: Text(
+              '${DateFormat('kk:mm').format(taskModel.startTime)} - ${DateFormat('kk:mm').format(taskModel.endTime)}',
+              style: GoogleFonts.openSans(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 18,
+                  color: Colors.white),
+              maxLines: 1,
+            ),
           ),
         ],
       ),

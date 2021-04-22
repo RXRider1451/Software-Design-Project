@@ -3,10 +3,9 @@ import 'package:flutter/rendering.dart';
 import 'package:lottie/lottie.dart';
 import 'package:sd_health_science_app/screens/home_screen.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignInScreen extends StatefulWidget {
-  SignInScreen({Key key}) : super(key: key);
-
   @override
   _SignInScreenState createState() => _SignInScreenState();
 }
@@ -14,6 +13,9 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   bool _obscureText = true;
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+
+  final _usernameController = TextEditingController();
+  final _passwordController = TextEditingController();
 
   void _toggle() {
     setState(() {
@@ -60,6 +62,7 @@ class _SignInScreenState extends State<SignInScreen> {
                             height: MediaQuery.of(context).size.height * 0.06,
                             width: MediaQuery.of(context).size.width * 0.65,
                             child: TextFormField(
+                              controller: _usernameController,
                               textAlignVertical: TextAlignVertical.bottom,
                               //textAlign: TextAlign.center,
                               cursorColor: Colors.black,
@@ -189,9 +192,17 @@ class _SignInScreenState extends State<SignInScreen> {
                                         RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(30.0),
                                     ))),
-                                onPressed: () {
+                                onPressed: () async {
                                   if (_formkey.currentState.validate()) {
-                                    Navigator.push(
+                                    SharedPreferences prefs =
+                                        await SharedPreferences.getInstance();
+
+                                    setState(() {
+                                      prefs.setString('username',
+                                          _usernameController.text.trim());
+                                    });
+
+                                    Navigator.pushReplacement(
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:sd_health_science_app/screens/home_screen.dart';
 import 'package:sd_health_science_app/screens/signin.dart';
+import 'package:sd_health_science_app/services/auth.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+Future<void> main() async {
   runApp(MyApp());
 }
 
@@ -16,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomeScreen(),
+      home: Auth(),
     );
   }
 }
