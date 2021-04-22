@@ -89,7 +89,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   getSharedPref() async {
     prefs = await SharedPreferences.getInstance();
-    username = await prefs.getString('username');
+    setState(() async {
+      username = await prefs.getString('username');
+    });
   }
 
   List<TaskModel> _getEventsForDay(DateTime focusedDay) {
@@ -148,7 +150,7 @@ class _HomeScreenState extends State<HomeScreen> {
               decoration: BoxDecoration(color: Colors.black),
             ),
             ListTile(
-              onTap: () {},
+              onTap: () async {},
               leading: Icon(
                 Icons.home,
                 color: Colors.black,
@@ -191,7 +193,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     fontWeight: FontWeight.normal, color: Colors.black),
               ),
             ),
-            Divider(),
           ],
         ),
       ),
