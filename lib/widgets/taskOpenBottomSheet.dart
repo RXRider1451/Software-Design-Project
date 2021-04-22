@@ -100,9 +100,23 @@ class taskOpenBottomSheet extends StatelessWidget {
               SizedBox(
                 height: 10,
               ),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(30.0),
-                child: Image.asset('assets/images/map.PNG'),
+              Container(
+                decoration: BoxDecoration(
+                  //Here goes the same radius, u can put into a var or function
+                  borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.5),
+                      spreadRadius: 2,
+                      blurRadius: 10,
+                      offset: Offset(0, 5),
+                    ),
+                  ],
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(30.0),
+                  child: Image.asset('assets/images/map.PNG'),
+                ),
               ),
               SizedBox(
                 height: 10,
