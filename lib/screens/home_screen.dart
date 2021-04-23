@@ -9,6 +9,7 @@ import 'package:sd_health_science_app/widgets/taskListTile.dart';
 import 'package:sd_health_science_app/widgets/taskOpenBottomSheet.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:lottie/lottie.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -144,10 +145,44 @@ class _HomeScreenState extends State<HomeScreen> {
       drawer: Drawer(
         child: ListView(
           children: [
-            UserAccountsDrawerHeader(
-              accountName: Text(username),
-              accountEmail: Text('email'),
-              decoration: BoxDecoration(color: Colors.black),
+            // UserAccountsDrawerHeader(
+            //   accountName: Text(username),
+            //   accountEmail: Text('email'),
+            //   decoration: BoxDecoration(color: Colors.black),
+
+            // ),
+            Container(
+              height: MediaQuery.of(context).size.height / 2.5,
+              width: MediaQuery.of(context).size.width,
+              child: Stack(
+                children: [
+                  Lottie.asset('assets/lottie/waves.json',
+                      height: MediaQuery.of(context).size.height / 4,
+                      width: MediaQuery.of(context).size.width,
+                      fit: BoxFit.fitWidth),
+                  Lottie.asset('assets/lottie/doctor.json',
+                      height: MediaQuery.of(context).size.height / 4,
+                      width: MediaQuery.of(context).size.width,
+                      fit: BoxFit.cover),
+                  Positioned(
+                      top: MediaQuery.of(context).size.height / 3.3,
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        child: Center(
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 50.0),
+                            child: Text(
+                              username,
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                      ))
+                ],
+              ),
             ),
             ListTile(
               onTap: () async {},

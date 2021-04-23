@@ -51,6 +51,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/lottie/doctor.json
+    - assets/lottie/waves.json
     - assets/images/map.PNG
   #   - images/a_dot_ham.jpeg
 
