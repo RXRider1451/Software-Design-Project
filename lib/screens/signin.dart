@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:form_field_validator/form_field_validator.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:http/http.dart' as http;
 import 'package:lottie/lottie.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sd_health_science_app/screens/forgotPassword_screen.dart';
 import 'package:sd_health_science_app/screens/home_screen.dart';
-import 'package:form_field_validator/form_field_validator.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class SignInScreen extends StatefulWidget {
   @override
@@ -17,6 +19,9 @@ class _SignInScreenState extends State<SignInScreen> {
 
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
+
+  GoogleSignInAccount _userObj;
+  GoogleSignIn _googleSignIn = GoogleSignIn();
 
   void _toggle() {
     setState(() {
@@ -198,6 +203,42 @@ class _SignInScreenState extends State<SignInScreen> {
                                       MaterialPageRoute(
                                           builder: (context) => HomeScreen()));
                                 }
+                              }),
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.45,
+                          height: MediaQuery.of(context).size.height * 0.06,
+                          child: TextButton(
+                              child: Text('Google Sign in',
+                                  style: TextStyle(
+                                      fontSize: 16, color: Colors.white)),
+                              style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          Colors.black),
+                                  shape: MaterialStateProperty.all<
+                                          RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30.0),
+                                  ))),
+                              onPressed: () async {
+                                SharedPreferences prefs =
+                                    await SharedPreferences.getInstance();
+
+                                await _googleSignIn.signIn().then((value) {
+                                  setState(() {
+                                    _userObj = value;
+                                    prefs.setString(
+                                        'username', _userObj.displayName);
+                                    prefs.setString('email', _userObj.email);
+                                  });
+                                  Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => HomeScreen()));
+                                }).catchError((e) {
+                                  print(e);
+                                });
                               }),
                         ),
                       ],

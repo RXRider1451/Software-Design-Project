@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "599985170554",
+    "project_id": "wits-health-app",
+    "storage_bucket": "wits-health-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:599985170554:android:1ba8148aadfbe48dc433c3",
+        "android_client_info": {
+          "package_name": "com.example.sd_health_science_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "599985170554-kbmm7unv7fkevp2nn9hklu1vk7527lih.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sd_health_science_app",
+            "certificate_hash": "89b77c8a4cd046c6973942e32896dba4a06e2ef6"
+          }
+        },
+        {
+          "client_id": "599985170554-h4vh0plcdc468eokjpndf3j1acf3s877.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhusSRPkeJlTAei6gUVW3tZrpzWD1sDWc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "599985170554-h4vh0plcdc468eokjpndf3j1acf3s877.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sd_health_science_app/main.dart';
 import 'package:sd_health_science_app/models/taskModel.dart';
 import 'package:sd_health_science_app/services/auth.dart';
@@ -22,6 +23,9 @@ class _HomeScreenState extends State<HomeScreen> {
   CalendarFormat _calendarFormat = CalendarFormat.month;
   DateTime _focusedDay = DateTime.now();
   DateTime _selectedDay;
+
+  GoogleSignInAccount _userObj;
+  GoogleSignIn _googleSignIn = GoogleSignIn();
 
   SharedPreferences prefs;
   String username = "";
@@ -90,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   getSharedPref() async {
     prefs = await SharedPreferences.getInstance();
-    setState(() async {
+    await setState(() async {
       username = await prefs.getString('username');
     });
   }
@@ -211,12 +215,15 @@ class _HomeScreenState extends State<HomeScreen> {
             Divider(),
             ListTile(
               onTap: () async {
-                setState(() {
-                  prefs.setString('username', "");
+                await _googleSignIn.signOut().then((value) {
+                  setState(() {
+                    prefs.setString('username', "");
+                    prefs.setString('email', "");
+                  });
+                  print('logout');
+                  Navigator.pushReplacement(
+                      context, MaterialPageRoute(builder: (context) => Auth()));
                 });
-                print('logout');
-                Navigator.pushReplacement(
-                    context, MaterialPageRoute(builder: (context) => Auth()));
               },
               leading: Icon(
                 Icons.logout,
@@ -285,6 +292,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           });
                         }
                       },
+
                       onPageChanged: (focusedDay) {
                         _focusedDay = focusedDay;
                       },

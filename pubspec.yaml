@@ -33,6 +33,8 @@ dependencies:
   table_calendar: ^3.0.0
   shared_preferences: ^2.0.5
   fluttertoast: ^8.0.6
+  google_sign_in: ^5.0.2
+  http: ^0.13.3
 
 dev_dependencies:
   flutter_test:
