@@ -18,5 +18,5 @@ cache:
 os:
   - linux
 script:
-  - ./flutter/bin/flutter test --coverage test/unit_tests/* test/widget_tests/*
+  - "./flutter/bin/flutter test --coverage"
 sudo: false
