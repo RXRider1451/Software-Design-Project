@@ -35,50 +35,50 @@ class _HomeScreenState extends State<HomeScreen> {
   List<TaskModel> studentTasks = [
     TaskModel(
         specialty: 'Clinical Skills',
-        startTime: DateTime(2021, 04, 22, 12),
-        endTime: DateTime(2021, 04, 28, 2),
+        startTime: DateTime(2021, 05, 13, 12),
+        endTime: DateTime(2021, 05, 20, 2),
         location: 'Charlotte maxeke',
         description: 'Description and notes',
         color: Colors.blue),
     TaskModel(
         specialty: 'Forensics ',
-        startTime: DateTime(2021, 04, 28, 12),
-        endTime: DateTime(2021, 05, 05, 2),
+        startTime: DateTime(2021, 05, 13, 12),
+        endTime: DateTime(2021, 05, 22, 2),
         location: 'Bara',
         description: 'Description and notes',
         color: Colors.amber),
     TaskModel(
         specialty: 'Internal medicine',
-        startTime: DateTime(2021, 04, 22, 12),
-        endTime: DateTime(2021, 04, 24, 2),
+        startTime: DateTime(2021, 05, 22, 12),
+        endTime: DateTime(2021, 05, 24, 2),
         location: 'Charlotte maxeke',
         description: 'Description and notes',
         color: Colors.green),
     TaskModel(
         specialty: 'Paediatrics ',
-        startTime: DateTime(2021, 04, 30, 12),
-        endTime: DateTime(2021, 05, 02, 2),
+        startTime: DateTime(2021, 05, 18, 12),
+        endTime: DateTime(2021, 05, 30, 2),
         location: 'Bara',
         description: 'Description and notes',
         color: Colors.deepPurple),
     TaskModel(
         specialty: 'Surgery',
-        startTime: DateTime(2021, 05, 09, 12),
-        endTime: DateTime(2021, 05, 18, 2),
+        startTime: DateTime(2021, 05, 29, 12),
+        endTime: DateTime(2021, 06, 08, 2),
         location: 'Helen joseph',
         description: 'Description and notes',
         color: Colors.lime),
     TaskModel(
         specialty: 'Emergency Med',
-        startTime: DateTime(2021, 05, 11, 12),
-        endTime: DateTime(2021, 05, 13, 2),
+        startTime: DateTime(2021, 06, 03, 12),
+        endTime: DateTime(2021, 06, 13, 2),
         location: 'Helen joseph',
         description: 'Description and notes',
         color: Colors.teal),
     TaskModel(
         specialty: 'Gynae',
-        startTime: DateTime(2021, 05, 13, 12),
-        endTime: DateTime(2021, 05, 20, 2),
+        startTime: DateTime(2021, 06, 13, 12),
+        endTime: DateTime(2021, 06, 20, 2),
         location: 'Helen joseph',
         description: 'Description and notes',
         color: Colors.pink),
@@ -140,6 +140,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    getSharedPref();
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
@@ -161,32 +162,38 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Stack(
                 children: [
                   Lottie.asset('assets/lottie/waves.json',
-                      height: MediaQuery.of(context).size.height / 4,
+                      height: MediaQuery.of(context).size.height / 2.5,
                       width: MediaQuery.of(context).size.width,
                       fit: BoxFit.fitWidth),
-                  Lottie.asset('assets/lottie/doctor.json',
-                      height: MediaQuery.of(context).size.height / 4,
-                      width: MediaQuery.of(context).size.width,
-                      fit: BoxFit.cover),
-                  Positioned(
-                      top: MediaQuery.of(context).size.height / 3.3,
-                      child: Container(
+                  ListView(
+                    children: [
+                      Lottie.asset('assets/lottie/doctor.json',
+                          height: MediaQuery.of(context).size.height / 4,
+                          width: MediaQuery.of(context).size.width,
+                          fit: BoxFit.cover),
+                      Container(
+                        padding: EdgeInsets.only(top: 80),
                         width: MediaQuery.of(context).size.width,
-                        child: Center(
-                          child: Padding(
-                            padding: const EdgeInsets.only(right: 50.0),
-                            child: Text(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
                               username,
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 15,
                                   fontWeight: FontWeight.bold),
                             ),
-                          ),
+                          ],
                         ),
-                      ))
+                      ),
+                    ],
+                  ),
                 ],
               ),
+            ),
+            SizedBox(
+              height: 30,
             ),
             ListTile(
               onTap: () async {},
