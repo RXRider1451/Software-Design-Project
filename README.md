@@ -10,7 +10,7 @@ Student Management app for the Faculty of Health Science
 
 There are currently 3 types of known users for the mobile application: students, registrars and consultants. The fundamental purpose of the app is to track student actions. For example, the app needs to track (via geographical data) where the student is to verify whether they are at the hospital/place that they are meant to be at, at that time. 
 
-Users need to be able to login, view their timetable, communicate with the consultants and view their allocations.
+Users need to be able to login, view their timetable and communicate with the consultants and view their allocations.
 
 
 ## Getting Started
