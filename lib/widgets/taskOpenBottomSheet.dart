@@ -163,41 +163,41 @@ class _taskOpenBottomSheetState extends State<taskOpenBottomSheet>
                   SizedBox(
                     height: 10,
                   ),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 10),
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height * 0.08,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          task = !task;
-                        });
-                      },
-                      child: Text(
-                        task == false ? 'Start Task' : "End Task",
-                        style: GoogleFonts.openSans(
-                            color: task == false ? Colors.black : Colors.white,
-                            fontSize: 20),
-                      ),
-                      style: ButtonStyle(
-                        // foregroundColor:
-                        //     MaterialStateProperty.all<Color>(Colors.white),
-                        backgroundColor: task == false
-                            ? DateTime.now().day ==
-                                    widget.taskModel.startTime.day
-                                ? MaterialStateProperty.all<Color>(Colors.white)
-                                : MaterialStateProperty.all<Color>(Colors.grey)
-                            : MaterialStateProperty.all<Color>(Colors.red),
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(30)),
-                              side: BorderSide.none),
-                        ),
-                      ),
-                    ),
-                  ),
+                  // Container(
+                  //   padding: EdgeInsets.symmetric(horizontal: 10),
+                  //   width: MediaQuery.of(context).size.width,
+                  //   height: MediaQuery.of(context).size.height * 0.08,
+                  //   child: ElevatedButton(
+                  //     onPressed: () {
+                  //       setState(() {
+                  //         task = !task;
+                  //       });
+                  //     },
+                  //     child: Text(
+                  //       task == false ? 'Start Task' : "End Task",
+                  //       style: GoogleFonts.openSans(
+                  //           color: task == false ? Colors.black : Colors.white,
+                  //           fontSize: 20),
+                  //     ),
+                  //     style: ButtonStyle(
+                  //       // foregroundColor:
+                  //       //     MaterialStateProperty.all<Color>(Colors.white),
+                  //       backgroundColor: task == false
+                  //           ? DateTime.now().day ==
+                  //                   widget.taskModel.startTime.day
+                  //               ? MaterialStateProperty.all<Color>(Colors.white)
+                  //               : MaterialStateProperty.all<Color>(Colors.grey)
+                  //           : MaterialStateProperty.all<Color>(Colors.red),
+                  //       shape:
+                  //           MaterialStateProperty.all<RoundedRectangleBorder>(
+                  //         RoundedRectangleBorder(
+                  //             borderRadius:
+                  //                 BorderRadius.all(Radius.circular(30)),
+                  //             side: BorderSide.none),
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               ),
             ],
@@ -205,7 +205,7 @@ class _taskOpenBottomSheetState extends State<taskOpenBottomSheet>
         ),
       ),
       width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height / 1.7,
+      height: MediaQuery.of(context).size.height / 2,
     );
   }
 }
