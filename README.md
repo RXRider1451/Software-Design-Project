@@ -4,11 +4,9 @@ Student Management app for the Faculty of Health Science
 
 ## Build-Test Status
 
-Coveralls Badge
-[![Coverage Status](https://coveralls.io/repos/github/RXRider1451/Software-Design-Project/badge.svg)](https://coveralls.io/github/RXRider1451/Software-Design-Project)
 
-TravisCI Badge
-[![Build Status](https://travis-ci.com/RXRider1451/Software-Design-Project.svg?branch=main)](https://travis-ci.com/RXRider1451/Software-Design-Project)
+[![Build Status](https://travis-ci.com/RXRider1451/Software-Design-Project.svg?branch=main)](https://travis-ci.com/RXRider1451/Software-Design-Project) [![Coverage Status](https://coveralls.io/repos/github/RXRider1451/Software-Design-Project/badge.svg)](https://coveralls.io/github/RXRider1451/Software-Design-Project)
+
 
 ## Overview
 
