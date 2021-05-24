@@ -28,4 +28,4 @@ Users need to be able to login, view their timetable and communicate with the co
 ## More Information
 
 For more info as to the scope of the project and Sprint documentation, follow the project on Taiga:
-https://tree.taiga.io/project/rxrider-software-design-project/wiki/home
+* https://tree.taiga.io/project/rxrider-software-design-project/wiki/home
