@@ -9,13 +9,13 @@ Student Management app for the Faculty of Health Science
 
 ## Developers
 
-• Sedzani 
-• Suraksha 
-• Favour
-• Kiyolin
-• Eston
-• Seyur
-• Derrin
+* Sedzani 
+* Suraksha 
+* Favour
+* Kiyolin
+* Eston
+* Seyur
+* Derrin
 
 
 ## Overview
